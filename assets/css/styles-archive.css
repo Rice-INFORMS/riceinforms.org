@@ -1,0 +1,138 @@
+/* =========================
+   About Hero
+========================= */
+
+
+
+.about-hero{
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 0 3.5rem;
+  overflow: hidden;
+}
+
+/* Background image */
+.about-hero-bg{
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/skyspace-bg.jpg"); /* <-- update path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+}
+
+/* Scrim for contrast */
+.about-hero-scrim{
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1200px 700px at 15% 20%, rgba(0,0,0,0.35), transparent 60%),
+    linear-gradient(90deg, rgba(11,15,23,0.72), rgba(11,15,23,0.42)),
+    rgba(11,15,23,0.25);
+}
+
+.about-hero-inner{
+  position: relative;
+  z-index: 2;
+}
+
+/* Layout for the two panels */
+.about-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* Glass panels */
+.about-panel{
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+}
+
+/* Headings */
+.about-h2{
+  margin: 0;
+  font-weight: 780;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.about-rule{
+  height: 3px;
+  width: 92px;
+  border-radius: 999px;
+  margin: 0.7rem 0 1rem;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent-3));
+  opacity: 0.95;
+}
+
+.about-p{
+  color: rgba(255,255,255,0.82);
+  line-height: 1.7;
+  margin-bottom: 0.9rem;
+}
+
+.about-list{
+  margin: 0.25rem 0 0;
+  padding-left: 1.1rem;
+  color: rgba(255,255,255,0.80);
+  line-height: 1.75;
+}
+
+.about-list li{ margin: 0.35rem 0; }
+
+/* Y section internal split: text + card */
+.about-two-col{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.about-card{
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+}
+
+.about-card-kicker{
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.68);
+  margin-bottom: 0.35rem;
+}
+
+.about-card-title{
+  font-size: 1.05rem;
+  margin: 0 0 0.35rem;
+  font-weight: 750;
+  color: rgba(255,255,255,0.92);
+}
+
+.about-card-text{
+  color: rgba(255,255,255,0.78);
+  line-height: 1.6;
+}
+
+/* Responsive: stack panels and put card under text */
+@media (max-width: 992px){
+  .about-grid{ grid-template-columns: 1fr; }
+  .about-two-col{ grid-template-columns: 1fr; }
+  .about-hero{ padding-top: 5.5rem; }
+}
+
+/* Reduce height on small screens */
+@media (max-width: 576px){
+  .about-hero{ min-height: auto; padding: 5rem 0 2.5rem; }
+  .about-panel{ padding: 1.2rem; }
+}
