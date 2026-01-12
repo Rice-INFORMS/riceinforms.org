@@ -962,17 +962,26 @@ body{
 }
 
 
-.about-img-container{
+.about-img-container,
+.about-img-container-tall {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 30px 0px 30px 0px;
-  max-height: 180px;
   overflow: hidden; /* optional: prevents spill if something goes wrong */
 }
 
 .about-img-container img{
   max-height: 150px; /* key line */
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.about-img-container-tall img{
+  max-height: 350px; /* key line */
   width: auto;
   max-width: 100%;
   height: auto;

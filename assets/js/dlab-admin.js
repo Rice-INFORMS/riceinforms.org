@@ -22,6 +22,7 @@ import {
   orderBy,
   onSnapshot,
   deleteDoc,
+  getDocs,
   doc
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
@@ -207,13 +208,29 @@ onAuthStateChanged(auth, (user) => {
 const projectsRef = collection(db, "decisionlabProjects");
 const q = query(projectsRef, orderBy("createdAt", "desc"));
 
-onSnapshot(q, (snap) => {
-  lastProjects = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
-  renderProjects();
-}, (err) => {
-  console.error("[DecisionLab] snapshot error:", err);
-});
 
+// ======== SNAPSHOT FOR CONTINUOUS LISTENING (makes browser slow?) ============
+
+// onSnapshot(q, (snap) => {
+//   lastProjects = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+//   renderProjects();
+// }, (err) => {
+//   console.error("[DecisionLab] snapshot error:", err);
+// });
+
+// =========== Load projects ONCE (faster browser?) =================
+
+async function loadProjectsOnce() {
+  try {
+    const snap = await getDocs(q);
+    lastProjects = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    renderProjects();
+  } catch (err) {
+    console.error("[DecisionLab] getDocs error:", err);
+  }
+}
+
+loadProjectsOnce();
 
 
 // Add new item
