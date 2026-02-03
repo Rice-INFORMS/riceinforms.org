@@ -1499,6 +1499,139 @@ body{
 ========================= */
 
 
+.pdf-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.pdf-panel-right,
+.pdf-panel-left {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+
+  /* Interior of the card */
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  border-radius: 14px;
+  padding: 22px 24px;
+
+  transition: background .22s ease;
+}
+
+/* GRADIENT BORDER LAYER */
+.pdf-panel-left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 1.6px;                     /* border thickness */
+
+  background: linear-gradient(
+    120deg,
+    #0f9b0f,     /* lighter green */
+    #b7efc5      /* dark forest */
+  );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+}
+
+.pdf-panel-right::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 1.6px;                     /* border thickness */
+
+  background: linear-gradient(
+    120deg,
+    #0f499b,     /* lighter green */
+    #b7ccef      /* dark forest */
+  );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+}
+
+.pdf-panel-right:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.pdf-panel-left:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.panel-content h4 {
+  margin: 0 0 6px 0;
+  font-weight: 600;
+}
+
+.panel-content p {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.pdf-thumb-wrap {
+  width: 100%;
+  max-width: 190px;
+  margin: 10px auto 12px auto;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.pdf-thumb-wrap img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;   /* crops cleanly */
+  display: block;
+}
+
+
+.pdf-thumb {
+  width: 100%;
+  max-width: 180px;      /* keeps it card-friendly */
+  height: auto;
+  display: block;
+  margin: 10px auto 12px auto;
+  border-radius: 6px;
+  opacity: 0.95;
+  transition: .2s ease;
+}
+
+/* optional subtle hover interaction */
+.pdf-panel-left:hover .pdf-thumb,
+.pdf-panel-right:hover .pdf-thumb  {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+
+
+
 
 .d-lab-projects {
   margin-top: 57px;
@@ -1567,7 +1700,7 @@ body{
 /* One color per season */
 .season-s24{ background: rgba(59,130,246,0.18); border-color: rgba(59,130,246,0.30); }   /* blue */
 .season-s25{ background: rgba(34,197,94,0.18);  border-color: rgba(34,197,94,0.30); }    /* green */
-.season-s26{ background: rgba(155,178,254,0.18); border-color: rgba(155,178,254,0.32); } /* light blue */
+.season-s26{ background: rgba(238,118,36,0.20); border-color: rgba(155,178,254,0.32); } /* light blue */
 .season-f26{ background: rgba(238,118,36,0.20); border-color: rgba(238,118,36,0.34); }   /* orange */
 
 .season-s27{ background: rgba(168,85,247,0.18); border-color: rgba(168,85,247,0.32); }   /* purple */
