@@ -100,11 +100,7 @@ function renderProjects() {
         <div class="d-flex gap-2 flex-wrap">
           ${
             p.pitchDeckUrl
-              ? isEmbeddablePdf(p.pitchDeckUrl)
-                ? `<button class="btn btn-sm btn-outline-soft js-view-deck"
-                            type="button"
-                            data-url="${escapeHtml(p.pitchDeckUrl)}">View</button>`
-                : `<a class="btn btn-sm btn-outline-soft" href="${p.pitchDeckUrl}" target="_blank" rel="noopener">View</a>`
+              ? `<a class="btn btn-sm btn-outline-soft" href="${p.pitchDeckUrl}" target="_blank" rel="noopener">View</a>`
               : `<span class="text-muted small">—</span>`
           }
           ${
